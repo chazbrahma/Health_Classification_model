@@ -23,13 +23,13 @@ Our goal is to predict test result outcomes using structured patient data.
 
 ### 2. Exploratory Data Analysis (EDA)
 
-**Test Result Balance**  
+**Test Result Balance:**  
 ![Test Results](https://github.com/chazbrahma/Health_Classification_model/blob/main/Plots/test_results_distribution%20(1).png?raw=true)
 
-**Age Histogram**  
+**Age Histogram:**  
 ![Age Histogram](https://github.com/chazbrahma/Health_Classification_model/blob/main/Plots/age_distribution.png?raw=true)
 
-**Medical Condition Distribution**  
+**Medical Condition Distribution:**  
 ![Medical Conditions](https://github.com/chazbrahma/Health_Classification_model/blob/main/Plots/medical_condition_distribution.png?raw=true)
 
 ---
