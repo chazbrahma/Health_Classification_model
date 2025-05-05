@@ -1,85 +1,71 @@
 # Healthcare ML Classification Project
 
-This project applies machine learning to classify patients into three diagnostic categories — **Abnormal**, **Inconclusive**, and **Normal** — based on anonymized healthcare features such as age, gender, admission data, and billing amount.
+This project applies machine learning to classify patients into three diagnostic categories — Abnormal, Inconclusive, and Normal — based on anonymized healthcare features.
 
 ---
 
 ## Problem Statement
 
-In a simulated hospital dataset, our objective is to predict a patient’s test result class based on available features at admission.
+Our goal is to predict test result outcomes using structured patient data.
 
 ### Target Classes:
 - Abnormal
 - Inconclusive
 - Normal
 
-### Key Features:
-- Age
-- Gender
-- Blood Type
-- Medical Condition
-- Admission Type
-- Billing Amount
-- Length of Stay
-- Age_Billing (Age × Billing)
-
 ---
 
 ## Workflow Overview
 
 ### 1. Data Cleaning
-- Dropped irrelevant columns: Name, Room Number, Insurance Provider, Doctor, Hospital, Medication.
-- Transformed date fields to calculate `Length_of_Stay`.
-- Created a composite feature: `Age_Billing`.
+- Dropped irrelevant columns (Name, Room Number, etc.)
+- Created `Length_of_Stay` and `Age_Billing` (interaction term)
 
 ### 2. Exploratory Data Analysis (EDA)
 
-**Test Results Distribution:**
-![Test Results](figures4/test_results_distribution.png)
+**Test Result Balance**  
+![Test Results](https://github.com/chazbrahma/Health_Classification_model/blob/main/Plots/test_results_distribution%20(1).png?raw=true)
 
-**Age Distribution:**
-![Age Histogram](figures4/age_distribution.png)
+**Age Histogram**  
+![Age Histogram](https://github.com/chazbrahma/Health_Classification_model/blob/main/Plots/age_distribution.png?raw=true)
 
-**Medical Condition Frequency:**
-![Medical Condition](figures4/medical_condition_distribution.png)
-
-> These plots confirmed a balanced target variable and uniform spread across features.
+**Medical Condition Distribution**  
+![Medical Conditions](https://github.com/chazbrahma/Health_Classification_model/blob/main/Plots/medical_condition_distribution.png?raw=true)
 
 ---
 
 ## Feature Engineering
-- One-hot encoded categorical variables.
-- Engineered:
-  - `Length_of_Stay` from admission/discharge dates
-  - `Age_Billing` = Age × Billing Amount
+
+- One-hot encoding of categorical variables
+- Derived interaction: `Age × Billing Amount`
+- Calculated `Length_of_Stay`
 
 ---
 
-## Modelling Approach
+## Model Training
 
-### Models Tried:
-- Random Forest (Baseline + Tuned)
-- XGBoost
-- CatBoost
-
-Final model selected: **Tuned Random Forest (via RandomizedSearchCV)**  
-→ Balanced performance, interpretability, and efficient training.
+- Random Forest (baseline)
+- Random Forest + Hyperparameter tuning (RandomizedSearchCV)
+- XGBoost and CatBoost (underperformed)
 
 ---
 
 ## Evaluation
 
-**Final Confusion Matrix:**
-![Confusion Matrix](figures4/confusion_matrix_rf_randomized.png)
+**Final Confusion Matrix**  
+![Confusion Matrix](https://github.com/chazbrahma/Health_Classification_model/blob/main/Plots/confusion_matrix_rf_randomized%20(1).png?raw=true)
 
-**Top 20 Feature Importances:**
-![Feature Importances](figures4/feature_importance_tuned_rf.png)
+**Top Feature Importances**  
+![Feature Importance](https://github.com/chazbrahma/Health_Classification_model/blob/main/Plots/feature_importance_tuned_rf%20(1).png?raw=true)
 
-### Final Accuracy: **~41.5%**
-- Abnormal & Normal were better predicted than Inconclusive
-- Most influential variables:
+---
+
+## Final Performance
+
+- Accuracy: **~41.5%**
+- Top 4 features:
   - Billing Amount
-  - Age_Billing
+  - Age × Billing
   - Age
   - Length of Stay
 
@@ -88,26 +74,31 @@ Final model selected: **Tuned Random Forest (via RandomizedSearchCV)**
 
 ---
 
-## Learnings
+## Key Learnings
 
-- Derived features (like Age × Billing) were very helpful
-- Feature importance helped prune irrelevant data
-- Random Forest was more stable than XGBoost/CatBoost in this setup
-
----
-
-##  Future Work
-
-- Try ensembling (Voting or Stacking)
-- Use Stratified K-Fold CV
-- Incorporate more time-based features or medical severity indices
-- Deploy via API or streamlit dashboard
+- Strong signal in billing-related features
+- Random Forest was most robust model
+- Inconclusive class remained hardest to predict
 
 ---
 
-## To Run the Project
+## Future Improvements
+
+- Try ensembling (VotingClassifier)
+- Use stratified K-Fold for more robust validation
+- Normalize skewed features (e.g. log-billing)
+
+---
+
+## How to Run
 
 ```bash
 pip install -r requirements.txt
 jupyter notebook notebooks/Healthcare_Project.ipynb
+
+##  License
+
+For educational and demonstration purposes only.
+
+
 
