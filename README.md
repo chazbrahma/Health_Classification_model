@@ -90,15 +90,17 @@ Our goal is to predict test result outcomes using structured patient data.
 
 ---
 
+##  License
+
+For educational and demonstration purposes only.
+
+
 ## How to Run
 
 ```bash
 pip install -r requirements.txt
 jupyter notebook notebooks/Healthcare_Project.ipynb
 
-##  License
-
-For educational and demonstration purposes only.
 
 
 
