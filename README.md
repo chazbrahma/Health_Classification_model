@@ -52,10 +52,10 @@ Our goal is to predict test result outcomes using structured patient data.
 
 ## Evaluation
 
-**Final Confusion Matrix**  
+**Final Confusion Matrix:**  
 ![Confusion Matrix](https://github.com/chazbrahma/Health_Classification_model/blob/main/Plots/confusion_matrix_rf_randomized%20(1).png?raw=true)
 
-**Top Feature Importances**  
+**Top Feature Importances:**  
 ![Feature Importance](https://github.com/chazbrahma/Health_Classification_model/blob/main/Plots/feature_importance_tuned_rf%20(1).png?raw=true)
 
 ---
